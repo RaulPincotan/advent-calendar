@@ -7,6 +7,7 @@ import java.util.List;
 import static java.nio.file.Files.lines;
 
 public class Day1_1 {
+
     private static final String SOURCE_FILE = "src/main/resources/coordinates.txt";
 
     public static void main(String[] args) {
@@ -17,11 +18,11 @@ public class Day1_1 {
         List<String> fileElements = readCoordinates();
 
         return fileElements.stream()
-                .mapToInt(Day1_1::extractDigits)
+                .mapToInt(Day1_1::getCoordinates)
                 .sum();
     }
 
-    private static int extractDigits(String row) {
+    private static int getCoordinates(String row) {
         int firstNumber = 0;
         int lastNumber = 0;
 
@@ -49,4 +50,5 @@ public class Day1_1 {
             throw new RuntimeException(e);
         }
     }
+
 }
