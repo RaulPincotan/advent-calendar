@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static java.nio.file.Files.lines;
 
-public class Day1_1 {
+public class Day1 {
 
     private static final String SOURCE_FILE = "src/main/resources/coordinates2.txt";
 
@@ -20,7 +20,7 @@ public class Day1_1 {
 
     private static int calibrateCoordinates() {
         return readCoordinates().stream()
-                .mapToInt(Day1_1::getCoordinates)
+                .mapToInt(Day1::getCoordinates)
                 .sum();
     }
 
