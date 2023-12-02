@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static java.nio.file.Files.lines;
 
@@ -80,8 +81,8 @@ public class Day1_1 {
 
 
     private static List<String> readCoordinates() {
-        try {
-            return lines(Path.of(SOURCE_FILE))
+        try (Stream<String> fileStream = lines(Path.of(SOURCE_FILE))) {
+            return fileStream
                     .toList();
         } catch (IOException e) {
             throw new RuntimeException(e);
