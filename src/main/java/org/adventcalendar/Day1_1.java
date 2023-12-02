@@ -16,9 +16,7 @@ public class Day1_1 {
     }
 
     private static int calibrateCoordinates() {
-        List<String> fileElements = readCoordinates();
-
-        return fileElements.stream()
+        return readCoordinates().stream()
                 .mapToInt(Day1_1::getCoordinates)
                 .sum();
     }
