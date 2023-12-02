@@ -24,25 +24,26 @@ public class Day1_1 {
     }
 
     private static int getCoordinates(String row) {
-        int firstNumber = 0;
-        int lastNumber = 0;
+        int firstDigitCoordinate = 0;
+        int lastDigitCoordinate = 0;
         String withDigits = convertLettersToDigits(row);
 
         for (int i = 0, j = withDigits.length() - 1; i < withDigits.length(); i++) {
-            if (firstNumber == 0) {
-                firstNumber = Integer.parseInt(withDigits.substring(i, i + 1));
+            if (firstDigitCoordinate == 0) {
+                firstDigitCoordinate = Integer.parseInt(withDigits.substring(i, i + 1));
             }
-            if (lastNumber == 0) {
-                lastNumber = Integer.parseInt(withDigits.substring(j, j + 1));
+            if (lastDigitCoordinate == 0) {
+                lastDigitCoordinate = Integer.parseInt(withDigits.substring(j, j + 1));
             }
             j--;
         }
 
-        return firstNumber * 10 + lastNumber;
+        return firstDigitCoordinate * 10 + lastDigitCoordinate;
     }
 
     private static String convertLettersToDigits(String row) {
         StringBuilder result = new StringBuilder();
+
         for (int i = 0; i < row.length(); i++) {
             String key = row.substring(i, i + 1);
             for (int j = i + 1; j < row.length(); j++) {
@@ -56,6 +57,7 @@ public class Day1_1 {
                 result.append(row.charAt(i));
             }
         }
+
         return result.toString();
     }
 
