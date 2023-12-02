@@ -11,15 +11,18 @@ public class Day1_1 {
 
     private static final String SOURCE_FILE = "src/main/resources/coordinates2.txt";
 
+
     public static void main(String[] args) {
         System.out.println("calibrateCoordinates() = " + calibrateCoordinates());
     }
+
 
     private static int calibrateCoordinates() {
         return readCoordinates().stream()
                 .mapToInt(Day1_1::getCoordinates)
                 .sum();
     }
+
 
     private static int getCoordinates(String row) {
         int firstDigitCoordinate = 0;
@@ -38,6 +41,7 @@ public class Day1_1 {
 
         return firstDigitCoordinate * 10 + lastDigitCoordinate;
     }
+
 
     private static String convertLettersToDigits(String row) {
         StringBuilder result = new StringBuilder();
