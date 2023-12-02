@@ -24,14 +24,14 @@ public class Day1_1 {
     private static int getCoordinates(String row) {
         int firstDigitCoordinate = 0;
         int lastDigitCoordinate = 0;
-        String withDigits = convertLettersToDigits(row);
+        String digits = convertLettersToDigits(row);
 
-        for (int i = 0, j = withDigits.length() - 1; i < withDigits.length(); i++) {
+        for (int i = 0, j = digits.length() - 1; i < digits.length(); i++) {
             if (firstDigitCoordinate == 0) {
-                firstDigitCoordinate = Integer.parseInt(withDigits.substring(i, i + 1));
+                firstDigitCoordinate = Integer.parseInt(digits.substring(i, i + 1));
             }
             if (lastDigitCoordinate == 0) {
-                lastDigitCoordinate = Integer.parseInt(withDigits.substring(j, j + 1));
+                lastDigitCoordinate = Integer.parseInt(digits.substring(j, j + 1));
             }
             j--;
         }
