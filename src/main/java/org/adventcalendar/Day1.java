@@ -19,7 +19,7 @@ public class Day1 {
 
 
     private static int calibrateCoordinates() {
-        return readCoordinates().stream()
+        return FileReader.readTxtFile(SOURCE_FILE).stream()
                 .mapToInt(Day1::getCoordinates)
                 .sum();
     }
@@ -77,16 +77,6 @@ public class Day1 {
                 "eight", 8,
                 "nine", 9
         );
-    }
-
-
-    private static List<String> readCoordinates() {
-        try (Stream<String> fileStream = lines(Path.of(SOURCE_FILE))) {
-            return fileStream
-                    .toList();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }
