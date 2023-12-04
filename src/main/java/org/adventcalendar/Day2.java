@@ -16,9 +16,15 @@ public class Day2 {
         System.out.println(FileReader.readTxtFile(SOURCE_FILE)
                 .stream()
                 .map(Day2::convertToGame)
+                .mapToInt(Day2::sumProductOfEachGame)
+                .sum());
+
+        System.out.println(FileReader.readTxtFile(SOURCE_FILE)
+                .stream()
+                .map(Day2::convertToGame)
                 .filter(Day2::isRevealValid)
                 .mapToInt(Game::id)
-                .sum());
+                .sum());;
     }
 
     private static boolean isRevealValid(Game game) {
@@ -35,6 +41,20 @@ public class Day2 {
         return totalGreenCubesOfGame <= TOTAL_GREEN_CUBE_IN_THE_BAG &&
                 totalRedCubesOfGame <= TOTAL_RED_CUBE_IN_THE_BAG &&
                 totalBlueCubesOfGame <= TOTAL_BLUE_CUBE_IN_THE_BAG;
+    }
+
+    private static int sumProductOfEachGame(Game game) {
+        List<Cube> cubes = game.reveals()
+                .stream()
+                .map(Reveal::cubes)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+
+        int totalGreenCubesOfGame = getCubesOfColour(cubes, "green");
+        int totalRedCubesOfGame = getCubesOfColour(cubes, "red");
+        int totalBlueCubesOfGame = getCubesOfColour(cubes, "blue");
+
+        return totalGreenCubesOfGame * totalRedCubesOfGame * totalBlueCubesOfGame;
     }
 
     private static int getCubesOfColour(List<Cube> cubes, String color) {
